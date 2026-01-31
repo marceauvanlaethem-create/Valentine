@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine 💘</title>
+
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+
+        #message {
+            margin-top: 30px;
+            font-size: 24px;
+            color: white;
+            display: none;
+        }
+
+        .cats {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .cats img {
+            width: 120px;
+            margin: 10px;
+            border-radius: 15px;
+        }
+
+        .bottom-text {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1> Inès, veux-tu être ma Valentine ? ❤️ </h1>
+
+    <button id="yes">Oui</button>
+    <button id="no">Non</button>
+
+    <div id="message">
+    🎉 YES LET’S GOOO 🎉
+</div>
+
+    <div class="cats">
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
+        <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif">
+        <img src="https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif">
+    </div>
+</div>
+
+<div class="bottom-text">
+    je te vois essayer de cliquer sur non 👀
+</div>
+
+<script>
+    const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
+    const message = document.getElementById("message");
+    const cats = document.querySelector(".cats");
+
+    noButton.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+        noButton.style.left = x + "px";
+        noButton.style.top = y + "px";
+    });
+
+    yesButton.addEventListener("click", () => {
+        message.style.display = "block";
+        cats.style.display = "block";
+
+        // Confettis 🎉
+        confetti({
+            particleCount: 200,
+            spread: 90,
+            origin: { y: 0.6 }
+        });
+
+        setTimeout(() => {
+            confetti({
+                particleCount: 150,
+                spread: 120,
+                origin: { y: 0.4 }
+            });
+        }, 400);
+    });
+</script>
+
+</body>
+</html>
